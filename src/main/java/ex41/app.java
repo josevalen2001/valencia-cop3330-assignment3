@@ -11,47 +11,74 @@ public class app {
 
     public static void main(String[] args) {
 
+        //Create variables for the file we want to read from and write to.
+        String sourceFile = "src/main/java/ex41/exercise41_input.txt";
+        String destinationFile = "src/main/java/ex41/exercise41_output.txt";
+
+        //Create an Arraylist to save the input and output text on.
         ArrayList<String> lines = new ArrayList<String>();
 
+        //Use our method to read input from file into arraylist.
+        readInto(lines, sourceFile);
+
+        //Sort the arrayList.
+        Collections.sort(lines);
+
+        //Use our method to write input from an Arraylist to a file.
+        writeUpon(lines, destinationFile);
+
+    }
+
+    //Method that uses our file reader to read input from a file into an ArrayList.
+    public static String readInto(ArrayList<String> readerDestination, String sourceFile) {
+
+        //This variable will be returned.
+        //It is to be set as the return value of the method that reads in our reader.
+        //The return value of this method will tell us if the read was a success or failure to test it easily.
+        String ret= "";
+
+        //Create a reader.
         Reader r = new Reader();
-        r.fileName = "src/main/java/ex41/exercise41_input.txt";
 
-        r.readInputFromFile(lines);
+        //Set source file for reader.
+        r.fileName = sourceFile;
 
-        for(int i = 0; i < lines.size(); i++)
-            System.out.println(lines.get(i));
+        //Set the destination array for the reader.
+        r.listOfLines = readerDestination;
 
+        //Raed the input from file to arraylist.
+        ret = r.readInputFromFile();
+
+        //Set our arrayList equals to the arrayList with the input.
+        readerDestination = r.returnArrayList();
+
+         return ret;
 
     }
 
+    //Method that uses our file writer to write input from an ArrayList to a file.
+    public static String writeUpon(ArrayList<String> writerSource, String destinationFile) {
 
-    public void a(ArrayList<String> listOfLines, String fileName) {
+        //This variable will be returned.
+        //It is to be set as the return value of the method that writes in our writer.
+        //The return value of this method will tell us if the write was a success or failure to test it easily.
+        String ret= "";
 
-        //Use a try/catch so that an exception in case the file is not found will not crash our code.
-        try {
+        //Create a writer.
+        Writer w = new Writer();
 
-            //Use a buffered reader and a file reader to read in input from the file.
-            BufferedReader reader = new BufferedReader(new FileReader("fileName"));
+        //Set the fileName for the writer.
+        w.fileName = destinationFile;
 
-            //Create a String variable to save the line that is currently being read from the file.
-            String currLine;
+        //Set the source ArrayList for the writer.
+        w.listOfLines = writerSource;
 
-            //Keep reading lines until we find the end of the text in the file.
-            while((currLine = reader.readLine()) != null)
-                //Save the lines of text being read in the arrayList created to store them.
-                listOfLines.add(currLine);
+        //Write to the destination file.
+        ret = w.writeInputToFile();
 
-            //Close the reader.
-            reader.close();
+        return ret;
 
-            //Set what to do if an exception is caught.
-        } catch(Exception ex) {
-
-            //Exit the function if an exception is caught.
-            return;
-        }
     }
-
 
 
 }

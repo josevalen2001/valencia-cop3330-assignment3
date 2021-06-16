@@ -1,0 +1,33 @@
+@startuml
+
+class app {
+
+ +main()
+ + String readInto(ArrayList<String> readerDestination, String sourceFile)
+ + String writeUpon(ArrayList<String> writerSource, String destinationFile)
+
+}
+
+class Reader {
+
+ String fileName
+ ArrayList<String> listOfLines
+
+ +String readInputFromFile()
+ + ArrayList<String> returnArrayList()
+
+}
+
+class Writer {
+
+ String fileName
+ ArrayList<String> listOfLines
+
+ +writeInputToFile()
+
+}
+
+app <--o Reader
+app <--o Writer
+
+@enduml
