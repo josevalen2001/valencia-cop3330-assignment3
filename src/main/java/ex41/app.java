@@ -12,8 +12,8 @@ public class app {
     public static void main(String[] args) {
 
         //Create variables for the file we want to read from and write to.
-        String sourceFile = "src/main/java/ex41/exercise41_input.txt";
-        String destinationFile = "src/main/java/ex41/exercise41_output.txt";
+        String sourceFile = "exercise41_input.txt";
+        String destinationFile = "exercise41_output.txt";
 
         //Create an Arraylist to save the input and output text on.
         ArrayList<String> lines = new ArrayList<String>();
