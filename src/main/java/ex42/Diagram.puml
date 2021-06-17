@@ -1,0 +1,31 @@
+@startuml
+
+class app {
+
++main()
++String readInto()
++String[] parseInput()
+
+}
+
+class Reader {
+
+String fileName
+String textRead
+
++ readInputFromFile()
++String returnTextRead()
+
+}
+
+class CVSParser {
+
+String inputNotParsed
+
+String[] returnParsedInput()
+
+}
+
+app <--o Reader
+app <--o CVSParser
+@enduml
