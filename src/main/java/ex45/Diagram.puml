@@ -1,0 +1,22 @@
+@startuml
+
+class app {
+
++main()
+
+}
+
+class textEditor {
+
++String fileName;
++String fileDestination;
++String target;
++String replacement;
+
++String replaceTextFile()
+
+}
+
+app <--o textEditor
+
+@enduml
